@@ -28,7 +28,6 @@ def monthly_challenges_by_num(request, month):
         months = list(data_dict_by_month.keys())
         redirect_month = months[month-1]
         redirect_url = reverse("month-challenge", args=[redirect_month])
-        print(redirect_url)
         return HttpResponseRedirect(redirect_url)
     except:
         return HttpResponseNotFound("<h1>Not Found</h1>")
@@ -37,6 +36,9 @@ def monthly_challenges_by_num(request, month):
 def monthly_challenges(request, month):
     try:
         challenge_text = data_dict_by_month[month]
+        return HttpResponse(render(request, 'challenges/challenge.html', {
+            "text" : challenge_text,
+            "title": month
+        }))
     except:
         return HttpResponseNotFound("<h2>Month Not Found</h2>")
-    return HttpResponse("<h1>" + challenge_text + "</h1>")
