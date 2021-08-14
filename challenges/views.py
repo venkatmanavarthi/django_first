@@ -14,13 +14,11 @@ data_dict_by_month = {
 
 def index(request):
 
-    list_of_links = ""
+    lists = list(data_dict_by_month.keys())
 
-    for each_month in data_dict_by_month.keys():
-        path_for_each_month = reverse("month-challenge", args=[each_month])
-        list_of_links += f"<li><a href=\"{path_for_each_month}\">{each_month.upper()}</a></li>"
-
-    return HttpResponse("<ul>" + list_of_links + "</ul>")
+    return HttpResponse(render(request, "challenges/index.html", {
+        "months": lists
+    }))
 
 
 def monthly_challenges_by_num(request, month):
@@ -37,7 +35,7 @@ def monthly_challenges(request, month):
     try:
         challenge_text = data_dict_by_month[month]
         return HttpResponse(render(request, 'challenges/challenge.html', {
-            "text" : challenge_text,
+            "text": challenge_text,
             "title": month
         }))
     except:
