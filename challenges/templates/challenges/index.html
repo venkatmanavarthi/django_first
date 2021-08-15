@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title|title }} Challenge</title>
-</head>
+    {% block page_title %}
+    Challenges
+    {% endblock %}
 
-<body>
+    {% block content %}
 
     <ul>
         {% for each_month in months %}
@@ -16,5 +12,4 @@
         {% endfor %}
     </ul>
 
-</body>
-</html>
+    {% endblock %}

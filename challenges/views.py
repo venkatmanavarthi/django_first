@@ -6,7 +6,8 @@ from django.urls import reverse
 data_dict_by_month = {
     'january': 'Birthday Month',
     'february': '28 days #shortest month',
-    'march': 'march'
+    'march': 'march',
+    'April': None
 }
 
 # Create your views here.
