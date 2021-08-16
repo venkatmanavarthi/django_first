@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect, Http404
 from django.urls import reverse
 
 # data dict
@@ -29,7 +29,7 @@ def monthly_challenges_by_num(request, month):
         redirect_url = reverse("month-challenge", args=[redirect_month])
         return HttpResponseRedirect(redirect_url)
     except:
-        return HttpResponseNotFound("<h1>Not Found</h1>")
+        raise Http404()
 
 
 def monthly_challenges(request, month):

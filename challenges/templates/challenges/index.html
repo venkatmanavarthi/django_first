@@ -6,6 +6,7 @@
 
     {% block content %}
 
+
     <ul>
         {% for each_month in months %}
         <li><a href="{% url 'month-challenge' month=each_month %}">{{ each_month|title }}</a></li>
